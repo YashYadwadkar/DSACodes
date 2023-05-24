@@ -150,7 +150,7 @@ void adjmatlist::displaya()
                             temp=temp->next;  }
                             
                          }
-
+         
                   
 
          
