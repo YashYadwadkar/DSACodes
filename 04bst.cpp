@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 struct node
@@ -10,19 +10,19 @@ struct node
 
 class bst
 {
-    public:
-    node *root,*temp;
-    int count,key;
+public:
+    node *root, *temp;
+    int count, key;
 
     void create();
-    void insert(node*, node*);
-    void disin(node*);
-    void dispre(node*);
-    void dispost(node*);
-    void search(node*, int);
-    int height(node*);
-    void mirror(node*);
-    void min(node*);
+    void insert(node *, node *);
+    void disin(node *);
+    void dispre(node *);
+    void dispost(node *);
+    void search(node *, int);
+    int height(node *);
+    void mirror(node *);
+    void min(node *);
 
     bst()
     {
@@ -198,39 +198,38 @@ int main()
         cin >> ch;
         switch (ch)
         {
-            case 1:
-                t.create();
-                break;
-            case 2:
-                cout << "\nNumber of nodes in the longest path: " << t.height(t.root);
-                break;
-            case 3:
-                cout << "\nThe min element is: ";
-                t.min(t.root);
-                break;
-            case 4:
-                t.mirror(t.root);
-                cout << "\nThe mirror of the tree is: ";
-                t.disin(t.root);
-                break;
-            case 5:
-                t.search(t.root, t.key);
-                break;
-            case 6:
-                cout << "\n**************INORDER*************" << endl;
-                t.disin(t.root);
-                break;
-            case 7:
-                cout << "\n**************PREORDER*************" << endl;
-                t.dispre(t.root);
-                break;
-            case 8:
-                cout << "\n******************POSTORDER*************" << endl;
-                t.dispost(t.root);
-                break;
+        case 1:
+            t.create();
+            break;
+        case 2:
+            cout << "\nNumber of nodes in the longest path: " << t.height(t.root);
+            break;
+        case 3:
+            cout << "\nThe min element is: ";
+            t.min(t.root);
+            break;
+        case 4:
+            t.mirror(t.root);
+            cout << "\nThe mirror of the tree is: ";
+            t.disin(t.root);
+            break;
+        case 5:
+            t.search(t.root, t.key);
+            break;
+        case 6:
+            cout << "\n**************INORDER*************" << endl;
+            t.disin(t.root);
+            break;
+        case 7:
+            cout << "\n**************PREORDER*************" << endl;
+            t.dispre(t.root);
+            break;
+        case 8:
+            cout << "\n******************POSTORDER*************" << endl;
+            t.dispost(t.root);
+            break;
         }
         cout << "\nDo you want to continue: ";
         cin >> ans;
     } while (ans == 'y');
-    return 0;
 }

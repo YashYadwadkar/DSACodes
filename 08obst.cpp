@@ -1,31 +1,32 @@
 #include <iostream>
 using namespace std;
-class obst 
+class obst
 {
     int a[10], r[10][10], n;
     float p[10], q[10], w[10][10], c[10][10];
-    public:
+
+public:
     void accept();
     void cons_obst();
     int knuthmin(int, int);
     void tree(int i, int j);
 };
-void obst::accept() 
+void obst::accept()
 {
     int i;
     cout << "how many elements are there in the tree?\n";
     cin >> n;
     cout << "enter" << n << "elements \n";
     for (i = 1; i <= n; i++)
-    cin >> a[i] ;
+        cin >> a[i];
     cout << "enter" << n << "their probabilities\n";
     for (i = 1; i <= n; i++)
-    cin >>  p[i];
+        cin >> p[i];
     cout << "enter" << n + 1 << "failure probabilities\n";
     for (i = 0; i <= n; i++)
-    cin >> q[i];
+        cin >> q[i];
 }
-void obst::cons_obst() 
+void obst::cons_obst()
 {
     int i, m, j, k;
     for (i = 0; i < n; i++) /* Initialize the weight and cost matrices */
@@ -40,7 +41,7 @@ void obst::cons_obst()
     r[n][n] = c[n][n] = 0;
     for (m = 2; m <= n; m++) /* calculate the weight and cost matrices */
     {
-        for (i = 0; i <= n - m; i++) 
+        for (i = 0; i <= n - m; i++)
         {
             j = i + m;
             w[i][j] = w[i][j - 1] + p[j] + q[j];
@@ -55,12 +56,12 @@ void obst::cons_obst()
     cout << "\nright child of " << a[r[0][n]] << " is ";
     tree(r[0][n], n);
 }
-int obst::knuthmin(int i, int j) 
+int obst::knuthmin(int i, int j)
 {
     int min = 999, k, z;
-    for (k = r[i][j - 1]; k <= r[i + 1][j]; k++) 
+    for (k = r[i][j - 1]; k <= r[i + 1][j]; k++)
     {
-        if (min > c[i][k - 1] + c[k][j]) 
+        if (min > c[i][k - 1] + c[k][j])
         {
             min = c[i][k - 1] + c[k][j];
             z = k;
@@ -68,12 +69,12 @@ int obst::knuthmin(int i, int j)
     }
     return (z);
 }
-void obst::tree(int i, int j) 
+void obst::tree(int i, int j)
 {
-    if (r[i][j] == 0) 
+    if (r[i][j] == 0)
     {
-    cout<<" NULL\n";
-    return;
+        cout << " NULL\n";
+        return;
     }
     cout << " :: " << a[r[i][j]];
     cout << "\n left child of is ::" << a[r[i][j]];
@@ -81,12 +82,9 @@ void obst::tree(int i, int j)
     cout << "\n right child of is :: " << a[r[i][j]];
     tree(r[i][j], j);
 }
-int main() 
+int main()
 {
     obst o;
     o.accept();
     o.cons_obst();
 }
-
-
-
